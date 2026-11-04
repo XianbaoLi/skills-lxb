@@ -3,7 +3,7 @@ name: grill-me
 description: "Use when the user says 'grill me' / 拷打我 / 盘问我 / 多轮滚动访谈 / stress-test me: relentless multi-round grilling with pickable options that converges into a decision list / plan. Cross-platform (Claude Code, Codex, Cursor, Copilot, Gemini CLI, OpenCode, Hermes, any SKILL.md agent)."
 license: MIT
 metadata:
-  version: 2.3.0
+  version: 2.3.1
   build: portable
   derived_from: "mattpocock/skills (skills/productivity/grilling + grill-me, MIT); interaction modeled on Claude Code AskUserQuestion / plan mode"
 ---
