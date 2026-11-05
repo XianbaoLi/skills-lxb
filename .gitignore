@@ -6,3 +6,7 @@ desktop.ini
 # logs / scratch
 *.log
 *.tmp
+
+# Python test artifacts
+__pycache__/
+*.py[cod]
