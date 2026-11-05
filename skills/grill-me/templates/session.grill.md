@@ -2,6 +2,9 @@
 
 > Template only. Create or update a real file only where recording is allowed.
 > A preference is not permission; interview closure is not task completion.
+> In planning-only interviews, needs and explanations are the main content.
+> Omit action-authorization questions; optional execution records below are
+> relevant only to a separately requested execution task, not prompts to ask permission.
 
 - mode: <profile | decision | knowledge>
 - intensity: <light | standard | heavy>
@@ -15,9 +18,17 @@ label as history; without action evidence set `execution_status: unknown`,
 not `not-started` or `done`. Resume only when explicitly requested, and
 recompute open questions before asking another round.
 
+## Needs and constraints
+
+- Clarified needs: <known goals, scenarios and constraints>
+- Still vague: <hypotheses to explore; a complete plan is not required initially>
+
 ## Understanding gaps
 
-- <Unclear concept / explanation still needed; never infer a durable personal trait.>
+- Q<id>: needs-explanation | <question and terms to explain next round>
+- Preserve other answered questions; requesting help is not choosing a business option.
+- Explain the queued question first, then re-ask it plainly with the help option retained.
+- Never infer a durable personal trait from confusion.
 
 ## Decisions
 

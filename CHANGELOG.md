@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.5.0 — 2026-11-05
+
+- Center the skill on discovering needs from vague ideas, before choosing project architecture or a learning route.
+- Require an explicit help option in each choice question, not a hidden Other fallback.
+- Queue help selections as needs-explanation and teach the question first on the next round; preserve unrelated answers.
+- Keep help separate from business choices in multi-select; command approvals are not interview questions.
+
 ## 2.4.0 — 2026-11-05
 
 - Separate understanding, preference, scoped authorization and verified execution.

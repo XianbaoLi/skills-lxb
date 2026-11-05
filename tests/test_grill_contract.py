@@ -67,7 +67,7 @@ class ArtifactBaselineTests(unittest.TestCase):
         description = descriptions[0]
         self.assertLessEqual(len(description), 60)
         self.assertTrue(description.endswith("."))
-        self.assertIn('version: "2.4.0"', front)
+        self.assertIn('version: "2.5.0"', front)
         self.assertTrue(body.strip())
 
     def test_internal_skill_references_exist(self):
@@ -120,6 +120,34 @@ class ResumeBoundaryTests(unittest.TestCase):
         self.assertIn("旧版单一 done", text)
         self.assertIn("execution_status=unknown", text)
         self.assertIn("没有新的待决问题时不机械追加问卷", text)
+
+
+class NeedsDiscoveryTests(unittest.TestCase):
+    def test_vague_goals_are_explored_without_command_approval_questions(self):
+        text = (SKILL / "SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("不要求用户先有完整计划", text)
+        self.assertIn("模糊想法 → 需求探索 → 方案取舍 → 清晰计划", text)
+        self.assertIn("不在访谈中询问命令批准", text)
+
+    def test_explanation_request_is_queued_for_the_next_round(self):
+        text = (SKILL / "SKILL.md").read_text(encoding="utf-8")
+        for rule in ("needs-explanation", "下一轮优先解释", "多选同时", "保留其他问题已回答的内容"):
+            self.assertIn(rule, text)
+        self.assertNotIn("表单有空位可作选项", text)
+
+    def test_every_example_choice_question_has_a_visible_help_option(self):
+        text = (SKILL / "references/example-round.md").read_text(encoding="utf-8")
+        blocks = re.findall(r"```json\n(.*?)\n```", text, re.S)
+        self.assertTrue(blocks)
+        help_label = "我不懂这个问题，先讲解"
+        for block in blocks:
+            for question in json.loads(block)["questions"]:
+                choices = question.get("choices", [])
+                if choices:
+                    self.assertIn(help_label, choices)
+                    self.assertEqual(choices[-1], help_label)
+                    self.assertLessEqual(len(choices), 4)
+                    self.assertGreaterEqual(len(choices[:-1]), 2)
 
 
 if __name__ == "__main__":
