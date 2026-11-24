@@ -51,6 +51,25 @@ Multi-round, pickable-option grilling that stress-tests any topic and converges 
 
 详见 [交互示例](skills/grill-me/references/example-round.md) 与 [会话模板](skills/grill-me/templates/session.grill.md)。
 
+### STEM 教学与科学写作（第三方 Skill 快照）
+
+详见 [安装与兼容性说明](third-party-skills.md) 和 [上游版本清单](third-party-skills.json)。按需安装，保留原始 `SKILL.md`、运行所需文件及各自许可；这不是已集成的教学工作流。
+
+| Skill | 用途 |
+|---|---|
+| [mineru](skills/mineru/SKILL.md) | 文档解析与公式图片识别 |
+| [book-to-skill](skills/book-to-skill/SKILL.md) | 教材知识结构化 |
+| [stem-notes](skills/stem-notes/SKILL.md) | 理工科讲义、公式、习题解析 |
+| [study-atlas](skills/study-atlas/SKILL.md) | 互动复习、习题及模拟考试 |
+| [scientific-writing](skills/scientific-writing/SKILL.md) | 科学写作 |
+| [scientific-visualization](skills/scientific-visualization/SKILL.md) | 科学绘图 |
+| [scientific-schematics](skills/scientific-schematics/SKILL.md) | 科学示意图 |
+| [scientific-critical-thinking](skills/scientific-critical-thinking/SKILL.md) | 科学推理与审查 |
+| [peer-review](skills/peer-review/SKILL.md) | 证据与报告审查 |
+| [citation-management](skills/citation-management/SKILL.md) | 参考文献管理 |
+
+`claude-study-skills` 仅列为上游参考（固定提交未发现许可证，未复制源码）。
+
 ## 手动 / 离线安装目录
 
 | 平台 | 全局目录 | 项目目录 |
@@ -81,4 +100,4 @@ python -m unittest discover -s tests -v
 
 ## License
 
-MIT。grill-me 传承自 Matt Pocock 的 skills 仓库（`grilling`，MIT）；交互形态对标 Claude Code AskUserQuestion / plan mode。
+MIT（本仓库自有内容）。grill-me 传承自 Matt Pocock 的 skills 仓库（`grilling`，MIT）；交互形态对标 Claude Code AskUserQuestion / plan mode。第三方 Skill 保留各自上游许可证，详见 `third-party-skills.json` 与对应 Skill 目录；根目录许可证不重新许可第三方内容。
