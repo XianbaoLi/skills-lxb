@@ -60,6 +60,7 @@ Multi-round, pickable-option grilling that stress-tests any topic and converges 
 | [mineru](skills/mineru/SKILL.md) | 文档解析与公式图片识别 |
 | [book-to-skill](skills/book-to-skill/SKILL.md) | 教材知识结构化 |
 | [stem-notes](skills/stem-notes/SKILL.md) | 理工科讲义、公式、习题解析 |
+| [mathtranslations](skills/mathtranslations/SKILL.md) | 数学物理专业英译中、术语与译文校对 |
 | [study-atlas](skills/study-atlas/SKILL.md) | 互动复习、习题及模拟考试 |
 | [scientific-writing](skills/scientific-writing/SKILL.md) | 科学写作 |
 | [scientific-visualization](skills/scientific-visualization/SKILL.md) | 科学绘图 |

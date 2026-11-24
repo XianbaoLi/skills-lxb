@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "import_date": "2026-11-24",
-  "purpose": "STEM teaching / lecture notes / exercise generation / scientific writing",
+  "purpose": "STEM teaching / lecture notes / exercise generation / scientific writing / mathematical translation",
   "verification": {
     "method": "Compare source and destination Git blob SHA and file mode for selected upstream files; verify copied K-Dense licenses separately",
-    "upstream_files": 173,
+    "upstream_files": 196,
     "sha_or_mode_mismatches": 0,
     "runtime_tested": false
   },
@@ -63,6 +63,17 @@
       ],
       "selection": "Official skills/mineru/SKILL.md, license and linked page-range documentation; Apache-2.0 text included separately. No MinerU runtime/models bundled.",
       "verified_upstream_files": 3
+    },
+    {
+      "repository": "xixi-cc/mathtranslations-skill",
+      "commit": "8f8e2f5d98870a489482ab032653c4df1e4b525b",
+      "version": "2026.09.03",
+      "license": "MIT; attribution and template/logo authorization details in NOTICE.md",
+      "skills": [
+        "mathtranslations"
+      ],
+      "selection": "Complete upstream repository contents under skills/mathtranslations/, including binary assets, scripts, tests, LICENSE and NOTICE.md. Original content and Git modes unchanged.",
+      "verified_upstream_files": 23
     }
   ],
   "external_references": [
