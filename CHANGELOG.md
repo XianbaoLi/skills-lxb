@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add the upstream `polish-tables-figures` Skill snapshot (LaTeX figure/table layout, captions, cross-references and color-accessibility checks), retaining its Apache-2.0 license and NOTICE. Keep it standalone; do not add it to WF-DOC-PROCESS.
+
 - Consolidate document transcription, translation, combined OCR-to-candidate generation, and translation review into one multi-mode Workflow: WF-DOC-PROCESS.
 - Standardize mode-specific Skill requirements and retain one Markdown document per Workflow.
 - Remove four overlapping document Workflow files and update the catalogue and README.

@@ -51,7 +51,7 @@ Multi-round, pickable-option grilling that stress-tests any topic and converges 
 
 详见 [交互示例](skills/grill-me/references/example-round.md) 与 [会话模板](skills/grill-me/templates/session.grill.md)。
 
-### STEM 教学与科学写作（第三方 Skill 快照）
+### STEM 教学、科学写作与排版（第三方 Skill 快照）
 
 详见 [安装与兼容性说明](third-party-skills.md) 和 [上游版本清单](third-party-skills.json)。按需安装，保留原始 `SKILL.md`、运行所需文件及各自许可。各 Skill 仍是独立能力包；面向常见任务的文档化组合流程见 `workflows/`，它们不是自动化运行时。
 
@@ -68,6 +68,7 @@ Multi-round, pickable-option grilling that stress-tests any topic and converges 
 | [scientific-critical-thinking](skills/scientific-critical-thinking/SKILL.md) | 科学推理与审查 |
 | [peer-review](skills/peer-review/SKILL.md) | 证据与报告审查 |
 | [citation-management](skills/citation-management/SKILL.md) | 参考文献管理 |
+| [polish-tables-figures](skills/polish-tables-figures/SKILL.md) | LaTeX 图片、表格、子图、图注与交叉引用排版 |
 
 `claude-study-skills` 仅列为上游参考（固定提交未发现许可证，未复制源码）。
 
