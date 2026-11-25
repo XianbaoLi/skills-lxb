@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Define documentation-only Workflows: one Markdown file per task, stable semantic IDs, explicit capability/Skill/input/output metadata, and no workflow-specific executable code.
+- Add document transcription, mathematical/physics translation, combined OCR-to-Chinese-candidate, and translation-review workflows.
+- Update the Workflow catalogue and repository README.
+
 ## 2.5.0 — 2026-11-05
 
 - Center the skill on discovering needs from vague ideas, before choosing project architecture or a learning route.
