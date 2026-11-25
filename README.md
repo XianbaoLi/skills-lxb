@@ -73,16 +73,14 @@ Multi-round, pickable-option grilling that stress-tests any topic and converges 
 
 ## Workflows
 
-Skill 提供专业能力，Workflow 定义多个 Skill 在具体任务中的调用顺序、交接、检查点和交付物。当前工作流为文档化规范，由宿主 Agent 按需执行，不是独立的自动化运行时。
+工作流是由 Agent 读取的一份 Markdown 任务定义文档，不是实体代码。每份文档说明支持的功能、所需 Skill、输入输出、协作流程和边界。工作流命名和元信息规范见 [workflows/README.md](workflows/README.md)。
 
-| Workflow | 用途 |
+| Workflow ID | 用途 |
 |---|---|
-| [WF-DOC-01](workflows/scan-pdf-to-source-markdown.md) | 扫描版 PDF → 忠实原文 Markdown |
-| [WF-TR-01](workflows/source-markdown-to-chinese-candidate.md) | 已校验原文 → 候选中文版 |
-| [WF-DOC-TR-01](workflows/scanned-pdf-to-chinese-candidate.md) | 扫描版 PDF → 原文转写 + 候选中文版 |
-| [WF-TR-02](workflows/review-and-accept-translation.md) | 候选译文复核与显式验收 |
-
-从 [工作流目录](workflows/README.md) 查看适用条件、Skill 分工、文件组织和状态约定。
+| [WF-DOC-TRANSCRIBE](workflows/doc-transcribe.md) | 扫描版 PDF → 忠实原文 Markdown |
+| [WF-DOC-TRANSLATE](workflows/doc-translate.md) | 已校验原文 → 数学物理专业翻译候选稿 |
+| [WF-DOC-TRANSCRIBE-TRANSLATE](workflows/doc-transcribe-translate.md) | 扫描版 PDF → 原文转写 + 候选中文版 |
+| [WF-DOC-REVIEW-TRANSLATION](workflows/doc-review-translation.md) | 候选译文对照复核与显式验收 |
 
 ## 手动 / 离线安装目录
 
@@ -110,7 +108,7 @@ Skill 提供专业能力，Workflow 定义多个 Skill 在具体任务中的调�
 python -m unittest discover -s tests -v
 ```
 
-测试检查 grill-me 的行为契约，以及工作流文档的 Skill 引用、状态边界和本地优先规则。这些是静态契约测试，不是 OCR/翻译质量基准，也不验证所有平台的实际执行行为。
+测试目前主要覆盖 grill-me 的行为契约。Workflow 是 Markdown 规范，不依赖额外执行代码；其实际 OCR/翻译质量仍需通过代表性教材进行人工验收。
 
 ## License
 

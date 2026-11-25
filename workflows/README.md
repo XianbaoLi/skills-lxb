@@ -1,89 +1,90 @@
 # Workflows
 
-Workflows are task-level orchestration recipes built from the Skills in this repository.
+A Workflow is a **single Markdown document** describing a repeatable task that an Agent completes by coordinating existing Skills. It is a declarative task recipe, not an executable program.
 
-- A **Skill** provides a capability and specialist instructions.
-- A **Workflow** defines when to use capabilities, their order, hand-offs, checkpoints, outputs, and failure paths.
-- A workflow is documentation for the host Agent. It is **not** an executable pipeline, plugin, daemon, or guarantee that every host tool is available.
+- **Skill** = specialist capability and its usage instructions.
+- **Workflow** = supported task, required/optional Skills, inputs, outputs, constraints, and the order in which the Agent coordinates them.
+- **Agent** = interprets the Workflow, selects relevant Skills, adapts to available host tools, and performs the work.
+
+No Python, shell, MCP server, plugin, or other executable code is required to define a Workflow. Add code only when a deterministic operation cannot be handled reliably by the Agent and there is a concrete maintenance reason to automate it.
+
+## Naming convention
+
+Use stable, semantic names. Do not use sequence numbers such as WF-01 or names tied to a particular Skill implementation.
+
+- **Workflow ID:** WF-<DOMAIN>-<ACTION> in uppercase. Use a short domain and one or more action words. IDs are stable once published.
+- **Filename:** <domain>-<action>.md in lowercase kebab-case. The filename mirrors the ID without the WF- prefix.
+- **Display name:** concise human-readable name; use Chinese as the primary name in this repository.
+- **Version:** increment when supported capabilities, inputs/outputs, constraints, or process materially change.
+- Do not put Skill names or version numbers in the Workflow ID. Skills can be replaced without changing task identity.
+- A combined Workflow uses a clear compound action, not a vague name such as all-in-one.
+
+Examples:
+- WF-DOC-TRANSCRIBE → doc-transcribe.md
+- WF-DOC-TRANSLATE → doc-translate.md
+- WF-DOC-TRANSCRIBE-TRANSLATE → doc-transcribe-translate.md
+- WF-DOC-REVIEW-TRANSLATION → doc-review-translation.md
+
+## Required document structure
+
+Each Workflow is self-contained and has YAML front matter followed by explanatory Markdown.
+
+| Metadata | Meaning |
+|---|---|
+| workflow_id | Stable unique ID |
+| name | Human-readable name |
+| name_en | Optional English name |
+| version | Workflow document version |
+| status | draft, active, or deprecated |
+| category | Task domain |
+| execution_model | Normally agent-guided |
+| implementation | Normally documentation-only |
+| capabilities | What the Workflow supports |
+| skills.required | Skills essential to the task |
+| skills.optional | Skills used only when helpful |
+| inputs | Required or optional source material |
+| outputs | Expected artifacts |
+| not_supported | Explicit scope boundaries |
+| approval_gates | Actions requiring explicit user approval |
+
+The body should explain purpose and trigger conditions, Skill responsibilities, process and hand-offs, constraints, outputs, failure handling, and natural-language invocation examples.
+
+Do not duplicate the complete contents of referenced Skill instructions. Describe the orchestration and link to the relevant Skill.
 
 ## Workflow catalogue
 
-| ID | Purpose | Main Skills | Primary output |
-|---|---|---|---|
-| [WF-DOC-01](scan-pdf-to-source-markdown.md) | OCR and faithfully transcribe a scanned/image-heavy PDF | mineru; optional stem-notes | Original-language source Markdown |
-| [WF-TR-01](source-markdown-to-chinese-candidate.md) | Translate a checked source transcript into a Chinese candidate | mathtranslations | Chinese candidate Markdown |
-| [WF-DOC-TR-01](scanned-pdf-to-chinese-candidate.md) | Compose OCR, source transcription, and candidate translation | mineru, stem-notes, mathtranslations | Source Markdown + Chinese candidate |
-| [WF-TR-02](review-and-accept-translation.md) | Review a candidate and, only with explicit approval, promote it | mathtranslations; optional mineru | Review record + accepted translation |
+| Workflow ID | Name | File | Main Skills | Input → Output |
+|---|---|---|---|---|
+| WF-DOC-TRANSCRIBE | 扫描版 PDF 忠实转写 | doc-transcribe.md | mineru; stem-notes (optional) | Scanned PDF → source-language Markdown |
+| WF-DOC-TRANSLATE | 数学与物理资料专业翻译 | doc-translate.md | mathtranslations | Checked source Markdown → Chinese candidate |
+| WF-DOC-TRANSCRIBE-TRANSLATE | 扫描版 PDF 转写并生成候选中文版 | doc-transcribe-translate.md | mineru; mathtranslations; stem-notes (optional) | Scanned PDF → source Markdown + Chinese candidate |
+| WF-DOC-REVIEW-TRANSLATION | 中文译文对照复核与验收 | doc-review-translation.md | mathtranslations; mineru (optional) | Source + candidate → review record; accepted copy only after approval |
 
-## Selection
+## Shared conventions
 
-- Scanned/image-heavy PDF, original-language transcription only → WF-DOC-01.
-- Existing, checked source Markdown → WF-TR-01.
-- Scanned PDF and a requested Chinese candidate → WF-DOC-TR-01.
-- Existing Chinese candidate requiring review or acceptance → WF-TR-02.
-- If the PDF has already been parsed, reuse its valid MinerU document ID/locator and parsed output. Do not reparse merely because a new workflow starts.
-- For a full book, process coherent chapters/sections and maintain checkpoints. Do not automatically invoke book-to-skill unless the user wants a reusable, queryable knowledge Skill.
+- Read the project AGENTS.md first when present. User instructions and project-specific rules take precedence.
+- Reuse existing Skill installations, environments, parse results, terminology decisions, and project structure.
+- A Workflow selects only the Skills needed for its task. Do not invoke every Skill in the repository.
+- A Workflow describes what is supported, not an unconditional command sequence. The Agent adapts to source format, scope, host, and available tools.
+- Never silently install/upgrade dependencies, change persistent configuration, upload source documents, or overwrite existing user artifacts.
+- Keep source, intermediate work, candidate outputs, and accepted outputs distinct.
+- A candidate is not final. Acceptance must be explicit when the Workflow defines an approval gate.
+- A Workflow is not production-validated merely because its Markdown is complete. Record real-world validation separately.
 
-## Shared rules
+## File organization
 
-1. Read the working directory's AGENTS.md first when present. User instructions and project-specific rules take precedence over these generic recipes.
-2. Preserve the original source. Never modify or replace the source PDF.
-3. Treat the visible source PDF page as the authority for what was printed. MinerU output is a structured recognition result, not ground truth.
-4. Reuse existing local parsing results and environments. Do not install, upgrade, reconfigure, restart services, invalidate caches, or delete data without the user's approval.
-5. Use MinerU locally first. Never add --remote or upload source documents without explicit permission. If the available local tier cannot satisfy the task, stop and present the actual choices rather than silently switching tools.
-6. Keep intermediate files under _work/ and deliverables under output/. Do not place logs or raw parse payloads in the final reading document.
-7. Keep source transcription, translation candidate, review notes, and accepted translation as distinct artifacts.
-8. A file named *.candidate.md is not approved or final. Never rename, overwrite, or promote it automatically.
-9. Do not invent illegible text, missing equations, image labels, citations, or page numbers. Record uncertainty with a source-page reference.
-10. Workflows are selective: invoke only the Skills needed for the current stage. Do not mechanically run every Skill in the repository.
+The workflows directory contains one Markdown file per Workflow plus this catalogue. It should not contain copied Skill packages, raw documents, generated deliverables, or executable orchestration code.
 
-## Standard project layout
+For task-specific working files, follow project AGENTS.md or the Workflow's output convention. Generic default:
 
-Create only directories that the current task needs:
-
-```text
+~~~text
 project/
-├── AGENTS.md                         # optional project-specific rules
-├── source/                            # original user materials; read-only
-├── _work/
-│   └── <document-id>/
-│       ├── mineru/                    # raw MinerU output and structured responses
-│       ├── pages/                     # page renders / visual inspection material
-│       ├── figures/                   # extracted or cropped source figures
-│       ├── glossary.en-zh.md          # project terminology decisions
-│       ├── ocr-issues.md              # unresolved OCR/source issues
-│       └── translation-review.md      # candidate review record
-└── output/
-    └── <document-id>/
-        ├── <unit>.source.md
-        ├── <unit>.zh-CN.candidate.md
-        ├── <unit>.zh-CN.md             # only after explicit acceptance
-        └── assets/
-            └── <unit>/
-```
-
-Use the user's existing folder structure when it is already clear and safe. The layout above is a default, not a requirement to create empty folders.
-
-## Status model
-
-Use explicit artifact status in front matter or a sidecar manifest:
-
-- parsed — MinerU produced a parse result; visual/content review is incomplete.
-- transcribed — source-language Markdown has been assembled; checks may remain.
-- source-reviewed — the requested source range has been compared with the PDF and known issues recorded.
-- translation-candidate — Chinese translation exists but has not been accepted.
-- reviewed-candidate — a review pass is complete; unresolved issues remain listed. In candidate front matter, this can be represented by review_status: reviewed while translation_status remains candidate.
-- accepted — the user explicitly approved promotion to the accepted filename.
-
-Do not infer a later status from the existence of a file.
-
-## How to invoke
-
-- "按 WF-DOC-01，把这份扫描 PDF 的第 12–18 页忠实转写成英文 Markdown。"
-- "基于已经校验的 2.4.source.md，按 WF-TR-01 生成候选中文版。"
-- "按 WF-DOC-TR-01，把这本扫描教材的第 2.4 节转写并生成候选中文版。"
-- "按 WF-TR-02 对照英文原文复核这份候选译文；先不要定稿。"
+├── AGENTS.md
+├── source/              # original user materials, read-only
+├── _work/               # parse results, locators, glossaries, issue notes
+└── output/              # requested deliverables
+~~~
 
 ## Maturity
 
-These workflows are versioned specifications. They have not yet been validated end-to-end against a representative scan-heavy textbook on every supported Agent host. Treat host-specific tool differences and OCR quality as explicit validation items, not as proven capabilities.
+The current Workflows are draft specifications. Their structure and safety boundaries have been reviewed statically; end-to-end OCR and translation quality has not yet been benchmarked across representative documents or Agent hosts.

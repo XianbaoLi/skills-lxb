@@ -2,8 +2,9 @@
 
 ## Unreleased
 
-- Add documentation-level workflows for scanned-PDF transcription, Chinese translation candidates, end-to-end OCR-to-candidate generation, and explicit candidate acceptance.
-- Add static workflow-contract tests and link the workflow catalogue from the repository README.
+- Define documentation-only Workflows: one Markdown file per task, stable semantic IDs, explicit capability/Skill/input/output metadata, and no workflow-specific executable code.
+- Add document transcription, mathematical/physics translation, combined OCR-to-Chinese-candidate, and translation-review workflows.
+- Update the Workflow catalogue and repository README.
 
 ## 2.5.0 — 2026-11-05
 
