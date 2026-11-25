@@ -2,9 +2,9 @@
 
 ## Unreleased
 
-- Define documentation-only Workflows: one Markdown file per task, stable semantic IDs, explicit capability/Skill/input/output metadata, and no workflow-specific executable code.
-- Add document transcription, mathematical/physics translation, combined OCR-to-Chinese-candidate, and translation-review workflows.
-- Update the Workflow catalogue and repository README.
+- Consolidate document transcription, translation, combined OCR-to-candidate generation, and translation review into one multi-mode Workflow: WF-DOC-PROCESS.
+- Standardize mode-specific Skill requirements and retain one Markdown document per Workflow.
+- Remove four overlapping document Workflow files and update the catalogue and README.
 
 ## 2.5.0 — 2026-11-05
 
