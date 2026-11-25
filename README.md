@@ -53,7 +53,7 @@ Multi-round, pickable-option grilling that stress-tests any topic and converges 
 
 ### STEM 教学与科学写作（第三方 Skill 快照）
 
-详见 [安装与兼容性说明](third-party-skills.md) 和 [上游版本清单](third-party-skills.json)。按需安装，保留原始 `SKILL.md`、运行所需文件及各自许可；这不是已集成的教学工作流。
+详见 [安装与兼容性说明](third-party-skills.md) 和 [上游版本清单](third-party-skills.json)。按需安装，保留原始 `SKILL.md`、运行所需文件及各自许可。各 Skill 仍是独立能力包；面向常见任务的文档化组合流程见 `workflows/`，它们不是自动化运行时。
 
 | Skill | 用途 |
 |---|---|
@@ -70,6 +70,19 @@ Multi-round, pickable-option grilling that stress-tests any topic and converges 
 | [citation-management](skills/citation-management/SKILL.md) | 参考文献管理 |
 
 `claude-study-skills` 仅列为上游参考（固定提交未发现许可证，未复制源码）。
+
+## Workflows
+
+Skill 提供专业能力，Workflow 定义多个 Skill 在具体任务中的调用顺序、交接、检查点和交付物。当前工作流为文档化规范，由宿主 Agent 按需执行，不是独立的自动化运行时。
+
+| Workflow | 用途 |
+|---|---|
+| [WF-DOC-01](workflows/scan-pdf-to-source-markdown.md) | 扫描版 PDF → 忠实原文 Markdown |
+| [WF-TR-01](workflows/source-markdown-to-chinese-candidate.md) | 已校验原文 → 候选中文版 |
+| [WF-DOC-TR-01](workflows/scanned-pdf-to-chinese-candidate.md) | 扫描版 PDF → 原文转写 + 候选中文版 |
+| [WF-TR-02](workflows/review-and-accept-translation.md) | 候选译文复核与显式验收 |
+
+从 [工作流目录](workflows/README.md) 查看适用条件、Skill 分工、文件组织和状态约定。
 
 ## 手动 / 离线安装目录
 
@@ -97,7 +110,7 @@ Multi-round, pickable-option grilling that stress-tests any topic and converges 
 python -m unittest discover -s tests -v
 ```
 
-测试检查实际 skill 的规则、示例和引用，防止回退到「答题即授权」或「不懂也逼选」。这是文档契约测试，不是所有平台的 UI/权限执行测试；skill 不能替代宿主权限系统，也不能保证模型绝不误触发。
+测试检查 grill-me 的行为契约，以及工作流文档的 Skill 引用、状态边界和本地优先规则。这些是静态契约测试，不是 OCR/翻译质量基准，也不验证所有平台的实际执行行为。
 
 ## License
 

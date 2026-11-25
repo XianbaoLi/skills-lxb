@@ -1,6 +1,6 @@
 # STEM teaching skill collection
 
-2026-11-24 · Upstream snapshots, not a new integrated teaching pipeline. Read `third-party-skills.json` for exact commits and selected paths.
+2026-11-25 · Upstream snapshots plus separate workflow specifications. The Skills remain independent packages; the documentation-level Workflows compose them for common tasks but do not provide an executable runtime/orchestrator. Read `third-party-skills.json` for exact commits and selected paths.
 
 | Skill | Role | Origin |
 |---|---|---|
@@ -49,4 +49,4 @@ git -C claude-study-skills checkout --detach 957cc593d1cb88ec53db46c386a219c1bbf
 
 ## Verification and boundaries
 
-All 196 selected upstream file paths matched destination Git blob SHA and file mode; the six copies of K-Dense's MIT license were also checked. Source content has not been modified. The collection excludes unrelated website/CI/test/demo assets where listed in the manifest. No execution, installation, dependency resolution, or Codex end-to-end teaching-quality test was performed. The components remain separate and are not a MinerU-integrated workflow. Each included third-party skill retains its own upstream license; the root repository MIT license does not relicense third-party code. MinerU has additional license terms.
+All 196 selected upstream file paths matched destination Git blob SHA and file mode; the six copies of K-Dense's MIT license were also checked. Source content has not been modified. The collection excludes unrelated website/CI/test/demo assets where listed in the manifest. No execution, installation, dependency resolution, or Codex end-to-end teaching-quality test was performed. The Skills remain separate packages. The repository now includes documentation-level workflows that specify how a host Agent can compose MinerU, stem-notes, and mathtranslations; no executable integration or end-to-end runtime is included. Each included third-party skill retains its own upstream license; the root repository MIT license does not relicense third-party code. MinerU has additional license terms.

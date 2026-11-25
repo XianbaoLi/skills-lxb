@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Add documentation-level workflows for scanned-PDF transcription, Chinese translation candidates, end-to-end OCR-to-candidate generation, and explicit candidate acceptance.
+- Add static workflow-contract tests and link the workflow catalogue from the repository README.
+
 ## 2.5.0 — 2026-11-05
 
 - Center the skill on discovering needs from vague ideas, before choosing project architecture or a learning route.
