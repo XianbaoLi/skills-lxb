@@ -1,6 +1,6 @@
 # STEM teaching skill collection
 
-2026-11-25 · Upstream Skill snapshots plus documentation-only Workflow definitions. Each Workflow is one Markdown file describing supported capabilities, Skill metadata, inputs/outputs, and task coordination; there is no executable orchestrator. Read `third-party-skills.json` for exact commits and selected paths.
+2026-11-25 · Upstream Skill snapshots plus documentation-only Workflow definitions. Each Workflow is one Markdown file describing supported capabilities, task modes, mode-specific Skill metadata, inputs/outputs, and task coordination; there is no executable orchestrator. Read `third-party-skills.json` for exact commits and selected paths.
 
 | Skill | Role | Origin |
 |---|---|---|
@@ -49,4 +49,4 @@ git -C claude-study-skills checkout --detach 957cc593d1cb88ec53db46c386a219c1bbf
 
 ## Verification and boundaries
 
-All 196 selected upstream file paths matched destination Git blob SHA and file mode; the six copies of K-Dense's MIT license were also checked. Source content has not been modified. The collection excludes unrelated website/CI/test/demo assets where listed in the manifest. No execution, installation, dependency resolution, or Codex end-to-end teaching-quality test was performed. The Skills remain independent packages. The workflows directory contains one Markdown specification per task and describes how a host Agent may compose them; it adds no executable integration or runtime. Each included third-party skill retains its own upstream license; the root repository MIT license does not relicense third-party code. MinerU has additional license terms.
+All 196 selected upstream file paths matched destination Git blob SHA and file mode; the six copies of K-Dense's MIT license were also checked. Source content has not been modified. The collection excludes unrelated website/CI/test/demo assets where listed in the manifest. No execution, installation, dependency resolution, or Codex end-to-end teaching-quality test was performed. The Skills remain independent packages. The workflows directory contains one Markdown specification per Workflow. WF-DOC-PROCESS consolidates related transcription, translation, and review modes in a single document; it adds no executable integration or runtime. Each included third-party skill retains its own upstream license; the root repository MIT license does not relicense third-party code. MinerU has additional license terms.

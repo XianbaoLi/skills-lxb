@@ -73,14 +73,9 @@ Multi-round, pickable-option grilling that stress-tests any topic and converges 
 
 ## Workflows
 
-工作流是由 Agent 读取的一份 Markdown 任务定义文档，不是实体代码。每份文档说明支持的功能、所需 Skill、输入输出、协作流程和边界。工作流命名和元信息规范见 [workflows/README.md](workflows/README.md)。
+工作流是一份由 Agent 读取的 Markdown 任务定义文档，不是实体代码。它定义支持的功能、任务模式、所需 Skill、输入输出和执行边界。
 
-| Workflow ID | 用途 |
-|---|---|
-| [WF-DOC-TRANSCRIBE](workflows/doc-transcribe.md) | 扫描版 PDF → 忠实原文 Markdown |
-| [WF-DOC-TRANSLATE](workflows/doc-translate.md) | 已校验原文 → 数学物理专业翻译候选稿 |
-| [WF-DOC-TRANSCRIBE-TRANSLATE](workflows/doc-transcribe-translate.md) | 扫描版 PDF → 原文转写 + 候选中文版 |
-| [WF-DOC-REVIEW-TRANSLATION](workflows/doc-review-translation.md) | 候选译文对照复核与显式验收 |
+当前统一工作流：[WF-DOC-PROCESS — 教材与学习资料处理](workflows/doc-process.md)。支持忠实转写、专业翻译、转写并翻译、译文复核四种模式。工作流命名和元信息规范见 [workflows/README.md](workflows/README.md)。
 
 ## 手动 / 离线安装目录
 
