@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "import_date": "2026-11-24",
-  "purpose": "STEM teaching / lecture notes / exercise generation / scientific writing / mathematical translation",
+  "purpose": "STEM teaching / lecture notes / exercise generation / scientific writing / mathematical translation / LaTeX figures and tables",
   "verification": {
-    "method": "Compare source and destination Git blob SHA and file mode for selected upstream files; verify copied K-Dense licenses separately",
-    "upstream_files": 196,
+    "method": "Compare source and destination Git blob SHA and file mode for selected upstream files; retain upstream LICENSE and NOTICE files.",
+    "upstream_files": 206,
     "sha_or_mode_mismatches": 0,
     "runtime_tested": false
   },
@@ -74,6 +74,16 @@
       ],
       "selection": "Complete upstream repository contents under skills/mathtranslations/, including binary assets, scripts, tests, LICENSE and NOTICE.md. Original content and Git modes unchanged.",
       "verified_upstream_files": 23
+    },
+    {
+      "repository": "ShaishavMaisuria/research-paper-lifecycle-skills",
+      "commit": "cf30d6452cc6fd0570dd760eb65696f4a3485398",
+      "license": "Apache-2.0",
+      "skills": [
+        "polish-tables-figures"
+      ],
+      "selection": "Complete skills/polish-tables-figures/ directory (SKILL.md, references/, scripts/) plus upstream root LICENSE and NOTICE copied into the Skill directory. No venue profiles or unrelated Skills copied.",
+      "verified_upstream_files": 10
     }
   ],
   "external_references": [
