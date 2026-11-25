@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "import_date": "2026-11-24",
+  "purpose": "STEM teaching / lecture notes / exercise generation / scientific writing / mathematical translation",
+  "verification": {
+    "method": "Compare source and destination Git blob SHA and file mode for selected upstream files; verify copied K-Dense licenses separately",
+    "upstream_files": 196,
+    "sha_or_mode_mismatches": 0,
+    "runtime_tested": false
+  },
+  "sources": [
+    {
+      "repository": "Shass27/stem-notes",
+      "commit": "2122fa5f6db59207d42ec79100ec32b55d20cf07",
+      "license": "MIT",
+      "skills": [
+        "stem-notes"
+      ],
+      "selection": "Complete upstream repository contents, rooted at skills/stem-notes/",
+      "verified_upstream_files": 15
+    },
+    {
+      "repository": "virgiliojr94/book-to-skill",
+      "commit": "57f3db51ff338edfd940a255b885c60ac90e40fa",
+      "license": "MIT",
+      "skills": [
+        "book-to-skill"
+      ],
+      "selection": "SKILL.md, book_to_skill/, scripts/, references/, pyproject.toml, README.md, SECURITY-NOTICE.md, LICENSE.md, tools/scan_generated_skill.py and tools/validate_skill.py; website, CI, tests and evaluation fixtures excluded.",
+      "verified_upstream_files": 33
+    },
+    {
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "commit": "c21d13b3cc2894680229ba9959a53281acb9200e",
+      "license": "MIT",
+      "skills": [
+        "scientific-writing",
+        "scientific-visualization",
+        "scientific-schematics",
+        "scientific-critical-thinking",
+        "peer-review",
+        "citation-management"
+      ],
+      "selection": "Complete selected skill directories plus upstream LICENSE.md in each directory; all other skills excluded.",
+      "verified_upstream_files": 110
+    },
+    {
+      "repository": "phanthanhdieulinh/study-atlas",
+      "commit": "5e7de8f0ffe6dce051fe14277d4bf409e6fb2f03",
+      "license": "MIT",
+      "skills": [
+        "study-atlas"
+      ],
+      "selection": "Complete skills/study-atlas/ directory plus LICENSE; demo media and examples excluded.",
+      "verified_upstream_files": 12
+    },
+    {
+      "repository": "opendatalab/MinerU",
+      "commit": "097de7f63f54722c9b805ee1c9a14a0c5b02e078",
+      "license": "Apache-2.0 with MinerU additional terms; see upstream LICENSE.md",
+      "skills": [
+        "mineru"
+      ],
+      "selection": "Official skills/mineru/SKILL.md, license and linked page-range documentation; Apache-2.0 text included separately. No MinerU runtime/models bundled.",
+      "verified_upstream_files": 3
+    },
+    {
+      "repository": "xixi-cc/mathtranslations-skill",
+      "commit": "8f8e2f5d98870a489482ab032653c4df1e4b525b",
+      "version": "2026.09.03",
+      "license": "MIT; attribution and template/logo authorization details in NOTICE.md",
+      "skills": [
+        "mathtranslations"
+      ],
+      "selection": "Complete upstream repository contents under skills/mathtranslations/, including binary assets, scripts, tests, LICENSE and NOTICE.md. Original content and Git modes unchanged.",
+      "verified_upstream_files": 23
+    }
+  ],
+  "external_references": [
+    {
+      "repository": "GalacticQuasar/claude-study-skills",
+      "commit": "957cc593d1cb88ec53db46c386a219c1bbfae2fb",
+      "license": "No license file found in pinned tree",
+      "skills": [
+        "course-ingest",
+        "reference-sheet",
+        "teach-me"
+      ],
+      "status": "reference-only; not mirrored; upstream README documents direct installation"
+    }
+  ]
+}
